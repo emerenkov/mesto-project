@@ -15,4 +15,4 @@
 2. Сайт имеет 2 стандарта под монитор.
 3. Состоит из 4 секций.
 4. Сайт тянетсяю
-   **https://harwuk-cedbyk-8qysze.github.io/russian-travel/**
+   **https://harwuk-cedbyk-8qysze.github.io/mesto-project/**
