@@ -1,0 +1,9 @@
+.elements__image {
+  margin: 0;
+  padding: 0;
+  display: block;
+  box-sizing: border-box;
+  object-position: center;
+  object-fit: cover;
+  width: 282px;
+}

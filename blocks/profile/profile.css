@@ -1,0 +1,19 @@
+.profile {
+  margin: 0 auto;
+  padding: 40px 0 51px;
+  box-sizing: border-box;
+  max-width: 880px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 120px 336px auto;
+  column-gap: 30px;
+}
+
+@media screen and (max-width: 679px) {
+  .profile {
+    padding: 42px 0 36px;
+    grid-template-columns: repeat(auto-fit, minmax(282px, 1fr));
+    row-gap: 26px;
+    max-width: 320px;
+  }
+}

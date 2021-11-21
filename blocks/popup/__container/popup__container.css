@@ -1,0 +1,27 @@
+.popup__container {
+  margin: 0;
+  padding: 0;
+  height: 330px;
+  width: 430px;
+  justify-self: center;
+  align-self: start;
+  background-color: #FFF;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  display: grid;
+  grid-template-rows: 63px 140px 87px;
+  justify-content: center;
+  align-items: center;
+  row-gap: 20px;
+}
+
+@media screen and (max-width: 679px) {
+  .popup__container {
+    height: 322px;
+    width: 282px;
+    grid-template-rows: 47px 150px 71px;
+  }
+}

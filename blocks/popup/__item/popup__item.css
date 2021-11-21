@@ -1,0 +1,18 @@
+.popup__item {
+  margin: 0px auto 10px;
+  padding: 0 0 0px;
+  width: 358px;
+  border: none;
+  border-bottom: 1px solid #000000;
+  background-color: #FFF;
+  outline: none;
+  font-size: 14px;
+  line-height: 3.15;
+  padding: 0;
+}
+
+@media screen and (max-width: 679px) {
+  .popup__item {
+    width: 238px;
+  }
+}
