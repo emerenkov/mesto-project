@@ -7,12 +7,13 @@
   background-color: #000;
   box-sizing: border-box;
   align-self: center;
-  background-image: url(../../../images/Vector-pen.svg);
+  background-image: url(../../../images/vector-pen.svg);
   background-repeat: no-repeat;
   background-position: center;
   justify-self: start;
   align-self: end;
   cursor: pointer;
+  transition-duration: .5s;
 }
 
 .profile__edit-button:hover {

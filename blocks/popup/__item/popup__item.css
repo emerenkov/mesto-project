@@ -3,7 +3,7 @@
   padding: 0 0 0px;
   width: 358px;
   border: none;
-  border-bottom: 1px solid #000000;
+  border-bottom: 1px solid #cccccc;
   background-color: #FFF;
   outline: none;
   font-size: 14px;
@@ -11,6 +11,12 @@
   padding: 0;
   color: #000000;
   text-overflow: ellipsis;
+  opacity: 1;
+  transition-duration: .5s;
+}
+
+.popup__item:focus {
+  border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 @media screen and (max-width: 679px) {

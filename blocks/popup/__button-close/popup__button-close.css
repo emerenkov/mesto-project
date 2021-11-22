@@ -2,13 +2,14 @@
   width: 32px;
   height: 32px;
   background-color: rgba(0, 0, 0, .0);
-  background-image: url(../../../images/Close_Icon.svg);
+  background-image: url(../../../images/close_icon.svg);
   background-repeat: no-repeat;
   background-position: center;
   border: none;
   cursor: pointer;
   align-self: end;
   justify-self: end;
+  transition-duration: .5s;
 }
 
 .popup__button-close:hover {
@@ -19,6 +20,6 @@
   .popup__button-close {
     width: 20px;
     height: 20px;
-    background-image: url(../../../images/Close_Icon_mini.svg);
+    background-image: url(../../../images/close_icon_mini.svg);
   }
 }

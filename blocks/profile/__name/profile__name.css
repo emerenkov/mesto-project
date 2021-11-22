@@ -8,6 +8,9 @@
   color: #FFFFFF;
   align-self: end;
   justify-self: start;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 @media screen and (max-width: 679px) {
