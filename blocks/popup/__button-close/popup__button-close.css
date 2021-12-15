@@ -9,7 +9,8 @@
   cursor: pointer;
   align-self: end;
   justify-self: end;
-  transition-duration: .5s;
+  opacity: 1;
+  visibility: visible;
 }
 
 .popup__button-close:hover {

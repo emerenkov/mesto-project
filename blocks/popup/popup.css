@@ -10,7 +10,10 @@
   position: fixed;
   grid-template-columns: 510px;
   gap: 8px;
-  display: none;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.2s linear, opacity 0.2s linear;
+
 }
 
 @media screen and (max-width: 679px) {

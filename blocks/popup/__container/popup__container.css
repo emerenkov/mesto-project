@@ -13,7 +13,7 @@
   -ms-border-radius: 10px;
   -o-border-radius: 10px;
   display: grid;
-  grid-template-rows: 63px 140px 87px;
+  grid-template-rows: 63px 247px;
   justify-content: center;
   align-items: center;
   row-gap: 20px;
@@ -23,6 +23,6 @@
   .popup__container {
     min-height: 322px;
     width: 282px;
-    grid-template-rows: 47px 150px 71px;
+    grid-template-rows: 47px 230px;
   }
 }

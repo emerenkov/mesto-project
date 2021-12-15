@@ -73,20 +73,37 @@
     <footer class="footer">
       <p class="footer__copyright">&copy; 2021 Mesto Russia</p>
     </footer>
-    <section class="popup popup_opened">
+
+    <section class="popup edit" id="edit-popup">
       <button class="popup__button-close" type="button"></button>
       <div class="popup__container">
         <h2 class="popup__heading">Редактировать профиль</h2>
         <form name="form" class="popup__item-container">
-          <label for="name" class="popup__label"></label>
+          <!-- <label for="name" class="popup__label"></label> -->
           <input type="text" id="name" class="popup__item popup__item_el_name" placeholder="Жак-Ив Кусто">
-          <label for="cereer" class="popup__label"></label>
+          <!-- <label for="cereer" class="popup__label"></label> -->
           <input type="text" id="cereer" class="popup__item popup__item_el_career" placeholder="Исследователь океана">
+          <button class="popup__button-save" type="submit">Сохранить</button>
         </form>
-        <button class="popup__button-save" type="button">Сохранить</button>
       </div>
     </section>
+
+    <section class="popup item" id="item-popup">
+      <button class="popup__button-close" type="button"></button>
+      <div class="popup__container">
+        <h2 class="popup__heading">Новое место</h2>
+        <form name="form" class="popup__item-container">
+          <!-- <label for="name" class="popup__label"></label> -->
+          <input type="text" id="name" class="popup__item popup__item_el_places" placeholder="Название">
+          <!-- <label for="cereer" class="popup__label"></label> -->
+          <input type="text" id="cereer" class="popup__item popup__item_el_link" placeholder="Ссылка на картинку">
+          <button class="popup__button-save popup__button-save_el_creat" type="submit">Создать</button>
+        </form>
+      </div>
+    </section>
+
   </div>
+  <script src="./script.js"></script>
 </body>
 
 </html>
