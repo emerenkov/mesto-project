@@ -7,8 +7,9 @@
   background-position: center;
   border: none;
   cursor: pointer;
-  align-self: end;
-  justify-self: end;
+  position: absolute;
+  top: -40px;
+  right: -40px;
   opacity: 1;
   visibility: visible;
 }
