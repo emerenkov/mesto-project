@@ -14,9 +14,9 @@
 
 }
 
-@media screen and (max-width: 679px) {
-  .popup {
-    grid-template-columns: 288px;
-    gap: 16px;
-  }
-}
+/*@media screen and (max-width: 679px) {*/
+/*  .popup {*/
+/*    grid-template-columns: 288px;*/
+/*    gap: 16px;*/
+/*  }*/
+/*}*/

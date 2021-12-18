@@ -10,8 +10,6 @@
   position: absolute;
   top: -40px;
   right: -40px;
-  opacity: 1;
-  visibility: visible;
 }
 
 .popup__button-close:hover {
@@ -20,6 +18,7 @@
 
 @media screen and (max-width: 679px) {
   .popup__button-close {
+    right: 0;
     width: 20px;
     height: 20px;
     background-image: url(../../../images/close_icon_mini.svg);

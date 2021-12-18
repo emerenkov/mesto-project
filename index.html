@@ -9,8 +9,8 @@
   <title>MESTO</title>
 </head>
 
-<body>
-  <div class="page">
+<body class="page">
+  <div class="wrapper">
     <header class="header">
       <img src="./images/logo.svg" alt="Места России" class="header__logo">
     </header>
@@ -26,79 +26,60 @@
         </button>
       </section>
       <section class="elements" aria-label="Блок с местами">
-        <article class="elements__element">
-          <img src="./images/kirill-pershin-1088404-unsplash.jpg" alt="Здание в горах" class="elements__image">
-          <div class="elements__info">
-            <h2 class="elements__name">Карачаевск</h2>
-            <button class="elements__button-heart" type="button"></button>
-          </div>
-        </article>
-        <article class="elements__element">
-          <img src="./images/kirill-pershin-1404681-unsplash.png" alt="Гора Эльбрус" class="elements__image">
-          <div class="elements__info">
-            <h2 class="elements__name">Гора Эльбрус</h2>
-            <button class="elements__button-heart" type="button"></button>
-          </div>
-        </article>
-        <article class="elements__element">
-          <img src="./images/kirill-pershin-1556355-unsplash.png" alt="Гора Домбай" class="elements__image">
-          <div class="elements__info">
-            <h2 class="elements__name">Домбай</h2>
-            <button class="elements__button-heart" type="button"></button>
-          </div>
-        </article>
-        <article class="elements__element">
-          <img src="./images/kirill-pershin-1404681-unsplash.png" alt="Гора Эльбрус" class="elements__image">
-          <div class="elements__info">
-            <h2 class="elements__name">Гора Эльбрус</h2>
-            <button class="elements__button-heart" type="button"></button>
-          </div>
-        </article>
-        <article class="elements__element">
-          <img src="./images/kirill-pershin-1556355-unsplash.png" alt="Гора Домбай" class="elements__image">
-          <div class="elements__info">
-            <h2 class="elements__name">Домбай</h2>
-            <button class="elements__button-heart" type="button"></button>
-          </div>
-        </article>
-        <article class="elements__element">
-          <img src="./images/kirill-pershin-1088404-unsplash.jpg" alt="Здание в горах" class="elements__image">
-          <div class="elements__info">
-            <h2 class="elements__name">Карачаево-Черкесия</h2>
-            <button class="elements__button-heart" type="button"></button>
-          </div>
-        </article>
+
+
+
+
       </section>
     </main>
     <footer class="footer">
       <p class="footer__copyright">&copy; 2021 Mesto Russia</p>
     </footer>
 
-    <section class="popup edit" id="edit-popup">
+    <template id="template-cards">
+      <article class="elements__element">
+        <button class="elements__trash-button" type="button"></button>
+        <img src="#" alt="#" class="elements__image">
+        <div class="elements__info">
+          <h2 class="elements__name"></h2>
+          <button class="elements__button-heart" id="heart" type="button"></button>
+        </div>
+      </article>
+    </template>
+
+    <section class="popup" id="edit-popup">
       <div class="popup__container">
         <button class="popup__button-close" type="button"></button>
-        <h2 class="popup__heading">Редактировать профиль</h2>
         <form name="form" class="popup__item-container">
-          <!-- <label for="name" class="popup__label"></label> -->
-          <input type="text" id="name" class="popup__item popup__item_el_name" placeholder="Жак-Ив Кусто">
-          <!-- <label for="cereer" class="popup__label"></label> -->
-          <input type="text" id="cereer" class="popup__item popup__item_el_career" placeholder="Исследователь океана">
+          <h2 class="popup__heading">Редактировать профиль</h2>
+          <input type="text" class="popup__item popup__item_el_name" placeholder="Жак-Ив Кусто">
+          <input type="text" class="popup__item popup__item_el_career" placeholder="Исследователь океана">
           <button class="popup__button-save" type="submit">Сохранить</button>
         </form>
       </div>
     </section>
 
-    <section class="popup item" id="item-popup">
+
+
+    <section class="popup" id="item-popup">
       <div class="popup__container">
         <button class="popup__button-close" type="button"></button>
-        <h2 class="popup__heading">Новое место</h2>
         <form name="form" class="popup__item-container">
-          <!-- <label for="name" class="popup__label"></label> -->
-          <input type="text" id="name" class="popup__item popup__item_el_places" placeholder="Название">
-          <!-- <label for="cereer" class="popup__label"></label> -->
-          <input type="text" id="cereer" class="popup__item popup__item_el_link" placeholder="Ссылка на картинку">
+          <h2 class="popup__heading">Новое место</h2>
+          <input type="text" class="popup__item popup__item_el_places" placeholder="Название">
+          <input type="url" class="popup__item popup__item_el_link" placeholder="Ссылка на картинку">
           <button class="popup__button-save popup__button-save_el_creat" type="submit">Создать</button>
         </form>
+      </div>
+    </section>
+
+    <section class="popup" id="image-popup">
+      <div class="popup__container">
+        <button class="popup__button-close" type="button"></button>
+        <figure class="popup__image-container">
+          <img src="#" alt="#" class="popup__image">
+          <figcaption class="popup__image-figcaption"></figcaption>
+        </figure>
       </div>
     </section>
 
