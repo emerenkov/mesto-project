@@ -33,14 +33,13 @@ let links;
 // todo ОТКРЫТИЕ попапа
 function openPopup(popup) {
   popup.classList.add('popup_opened');
-  if (editPopup === popup) {
-    // вызываем ф-цию для заполнения строки инпута (редоктирования)
-  creatDate();
-  }
 }
+
 // todo кнопки открытия попапа
 buttonEditProfile.addEventListener('click', function () {
   openPopup(editPopup);
+  nameInput.value = profileName.textContent;
+  jobInput.value = profileCareer.textContent;
 });
 addButton.addEventListener('click', function () {
   openPopup(itemPopup);
@@ -55,37 +54,23 @@ function closePopup(popup) {
 editClosePopup.addEventListener('click', function () {
   closePopup(editPopup);
 });
+
 itemClosePopup.addEventListener('click', function () {
   closePopup(itemPopup);
 });
+
 imageClosePopup.addEventListener('click', function () {
   closePopup(imagePopup);
 });
 
-// todo получение заполненых строк в инпуте редактирования
-function creatDate() {
-  nameInput.value = profileName.textContent;
-  jobInput.value = profileCareer.textContent;
-}
-
-
-// todo задаем новое значение для строк инпута и закрываем попап редактирование и создания карточек
-function formSubmitHandler (evt) {
-  evt.preventDefault();
-  if (editPopup.classList.contains('popup_opened')) {
-    profileName.textContent = nameInput.value;
-    profileCareer.textContent = jobInput.value;
-    closePopup(editPopup);
-  } else {
-    addValue();
-    closePopup(itemPopup);
-  }
-}
-
 
 // todo кнопка сохранить изменения в редактировании профиля
-formElement.addEventListener('submit', formSubmitHandler);
-
+formElement.addEventListener('submit', function (evt){
+  evt.preventDefault();
+  profileName.textContent = nameInput.value;
+  profileCareer.textContent = jobInput.value;
+  closePopup(editPopup);
+});
 
 // todo масив с карточками
 const initialCards = [
@@ -115,16 +100,17 @@ const initialCards = [
   }
 ];
 
+
 // todo создание карточек
-function addCard(place, links) {
-  const element = templateCards.querySelector('.elements__element').cloneNode(true);
-  const image = element.querySelector('.elements__image');
+function createCard(place, links) {
+  const elements = templateCards.querySelector('.elements__element').cloneNode(true);
+  const image = elements.querySelector('.elements__image');
   image.src = links;
   image.alt = place;
-  element.querySelector('.elements__name').textContent = place;
-  const deleteButtonCard = element.querySelector('.elements__trash-button');
-  const likeButton = element.querySelector('.elements__button-heart');
-  cardElements.prepend(element);
+  elements.querySelector('.elements__name').textContent = place;
+  const deleteButtonCard = elements.querySelector('.elements__trash-button');
+  const likeButton = elements.querySelector('.elements__button-heart');
+
 
   // todo кнопка удаления карточек
   deleteButtonCard.addEventListener('click', function (evt) {
@@ -142,6 +128,11 @@ function addCard(place, links) {
     imageFigcaption.textContent = place;
     openPopup(imagePopup);
   });
+  return elements;
+}
+
+function addCard (elements) {
+  cardElements.prepend(elements);
 }
 
 // todo перебор масива с картачками и вызов ф-ции создания карточек
@@ -149,16 +140,17 @@ initialCards.forEach(function (card) {
   place = card.name;
   links = card.link;
   //вызов ф-ции создания карточек
-  addCard(place, links);
+  return addCard(createCard(card.name, card.link));
 });
 
-// todo кнопка сохранения нового места
-creatCard.addEventListener('submit', formSubmitHandler);
+creatCard.addEventListener('submit', function (evt){
+  evt.preventDefault();
+  addCard(createCard(nameImputCard.value, linksImputCard.value));
+  closePopup(itemPopup);
+  clearInput();
+});
 
-// todo принимаем данные нового места
-function addValue() {
-  place = nameImputCard.value;
-  links = linksImputCard.value;
-  // передаем новые данные в ф-цию создания карточки
-  addCard(place, links);
+function clearInput() {
+  nameImputCard.value = '';
+  linksImputCard.value = '';
 }
