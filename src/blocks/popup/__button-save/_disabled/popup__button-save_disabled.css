@@ -1,0 +1,4 @@
+.popup__button-save_disabled {
+  cursor: default;
+  background-color: #E5E5E5;
+}
