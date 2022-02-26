@@ -2,13 +2,13 @@ const popups = document.querySelectorAll('.popup');
 const outClick = 'popup_opened';
 
 
-// todo ОТКРЫТИЕ попапа
+//  ОТКРЫТИЕ попапа
 function openPopup(popup) {
   popup.classList.add(outClick);
   document.addEventListener('keydown', closeByEscape);
 }
 
-// todo ЗАКРЫТИЕ попапа
+//  ЗАКРЫТИЕ попапа
 function closePopup(popup) {
   popup.classList.remove(outClick);
   document.removeEventListener('keydown', closeByEscape);
