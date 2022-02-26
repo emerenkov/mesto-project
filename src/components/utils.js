@@ -1,48 +1,38 @@
-
-import {form, itemPopup} from './modal.js';
-const buttonClose = document.querySelectorAll('.popup__button-close');//
+const popups = document.querySelectorAll('.popup');
 const outClick = 'popup_opened';
-const getPopup = () => document.querySelector(`.${outClick}`)
+
 
 // todo ОТКРЫТИЕ попапа
 function openPopup(popup) {
   popup.classList.add(outClick);
-  closeButton(buttonClose);
+  document.addEventListener('keydown', closeByEscape);
 }
 
 // todo ЗАКРЫТИЕ попапа
 function closePopup(popup) {
   popup.classList.remove(outClick);
+  document.removeEventListener('keydown', closeByEscape);
 }
 
-//ф-ция закрытия попапа по клику мыши
-function freeSpaceClosePopup(evt) {
-  if (evt.target.classList.contains('popup_opened')) {
-    form.reset();
-    closePopup(getPopup());
-  }
-}
+
 // функция закрите при нажатии ESC
-function keyClosePopup(evt) {
-  if (evt.keyCode === 27) {
-    const popup = document.querySelector('.popup_opened');
-    if (popup) {
-      form.reset();
-      closePopup(getPopup());
-    }
+function closeByEscape(evt) {
+  if (evt.key === 'Escape') {
+    const isPopup = document.querySelector('.popup_opened');
+    closePopup(isPopup);
   }
 }
 
-const closeButton = () => {
-  const forms = Array.from(document.querySelectorAll('.popup__button-close'));
-
-  forms.forEach(formElement => {
-    formElement.addEventListener('click', function (e) {
-      closePopup(e.target.closest('.popup'));
-    })
-    form.reset();
+popups.forEach((popup) => {
+  popup.addEventListener('click', (evt) => {
+    if (evt.target.classList.contains('popup_opened')) {
+      closePopup(popup)
+    }
+    if (evt.target.classList.contains('popup__button-close')) {
+      closePopup(popup)
+    }
   })
-  };
+})
 
-export {openPopup, closePopup, freeSpaceClosePopup, keyClosePopup};
 
+export {openPopup, closePopup, closeByEscape};

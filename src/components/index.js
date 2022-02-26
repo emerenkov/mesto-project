@@ -2,7 +2,7 @@ import '../pages/index.css'; // добавьте импорт главного �
 import {enableValidation, objEnableValidation} from "./validate";
 
 import {itemPopup, editPopup, addButton, profileName, profileCareer, buttonEditProfile,
-  nameInput, jobInput} from './modal.js'
+  nameInput, jobInput, form} from './modal.js'
 
 const imagePopup = document.querySelector('#image-popup');//
 const imageFigcaption = imagePopup.querySelector('.popup__image-figcaption');//
@@ -15,7 +15,7 @@ enableValidation(objEnableValidation);
 
 //---------------------------------------------------------------------------------------------------------------------
 
-import {openPopup, freeSpaceClosePopup, keyClosePopup} from './utils.js';
+import {openPopup} from './utils.js';
 
 export {imageFigcaption, imagePopup, photoPopup, imageClosePopup};
 
@@ -28,14 +28,6 @@ buttonEditProfile.addEventListener('click', function () {
 });
 
 addButton.addEventListener('click', function () {
+  form.reset();
   openPopup(itemPopup);
 });
-
-//----------------------Закрытие попапа при нажатии overflow мышкой или ESC-------------------------------------------
-//повесил клик на враппер
-const wrapper = document.querySelector('.wrapper');
-//при клике мимо попапа запускается ф-ция
-wrapper.addEventListener('click', freeSpaceClosePopup);
-document.addEventListener('keydown', keyClosePopup);
-
-//----------------------------------ВАЛИДАЦИЯ ФОРМ---------------------------------------------------------------------

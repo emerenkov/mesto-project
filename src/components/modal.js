@@ -2,7 +2,7 @@ import {closePopup} from "./utils";
 import {createCard, addCard} from "./card.js";
 import {objEnableValidation, disableButton} from "./validate";
 
-const form = document.forms.formCreatPlace; //не уверен ввыборе формы по уникальному имени, но рааботает
+const form = document.forms.formCreatPlace;
 
 
 const itemPopup = document.querySelector('#item-popup');//

@@ -1,24 +1,4 @@
-import {openPopup, closePopup} from './utils.js';
-
-
-const editPopup = document.querySelector('#edit-popup');//
-const itemPopup = document.querySelector('#item-popup');//
-// const editClosePopup = editPopup.querySelector('.popup__button-close');//
-// const itemClosePopup = itemPopup.querySelector('.popup__button-close');//
-
-// const formElement = editPopup.querySelector('.popup__item-container');//
-// const nameInput = formElement.querySelector('.popup__item_el_name');//
-// const jobInput = formElement.querySelector('.popup__item_el_career');//
-
-const creatCard = itemPopup.querySelector('.popup__item-container');//
-// const nameImputCard = creatCard.querySelector('.popup__item_el_places');//
-// const linksImputCard = creatCard.querySelector('.popup__item_el_link');//
-
-const profile = document.querySelector('.profile');//
-// const addButton = profile.querySelector('.profile__add-button');//
-// const profileName = profile.querySelector('.profile__name');//
-// const profileCareer = profile.querySelector('.profile__career');//
-// const buttonEditProfile = document.querySelector('.profile__edit-button');//
+import {openPopup} from './utils.js';
 
 const templateCards = document.querySelector('#template-cards').content;
 const cardElements = document.querySelector('.elements');//
@@ -26,8 +6,9 @@ const cardElements = document.querySelector('.elements');//
 const imagePopup = document.querySelector('#image-popup');//
 const imageFigcaption = imagePopup.querySelector('.popup__image-figcaption');//
 const photoPopup = imagePopup.querySelector('.popup__image');//
-const imageClosePopup = imagePopup.querySelector('.popup__button-close');//
+
 // переменные для передачи данных из масива в ф-цию создания карточек
+
 let place;
 let links;
 
