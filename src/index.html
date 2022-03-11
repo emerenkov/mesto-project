@@ -5,7 +5,6 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!--  <link rel="stylesheet" href="./pages/index.css">-->
   <title>MESTO</title>
 </head>
 
@@ -16,7 +15,8 @@
     </header>
     <main class="main">
       <section class="profile">
-        <img src="<%=require('./images/image.jpg')%>" alt="аватар пользователя" class="profile__avatar">
+        <img src="<%=require('./images/image.jpg')%>" class="profile__avatar">
+        <button class="profile__button-avatar"></button>
         <div class="profile__info">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
           <button class="profile__edit-button" type="button"></button>
@@ -26,22 +26,29 @@
         </button>
       </section>
       <section class="elements" aria-label="Блок с местами">
+        <ul class="elements__list">
 
+        </ul>
       </section>
     </main>
     <footer class="footer">
       <p class="footer__copyright">&copy; 2021 Mesto Russia</p>
     </footer>
 
+
+
     <template id="template-cards">
-      <article class="elements__element">
+      <li class="elements__element">
         <button class="elements__trash-button" type="button"></button>
         <img src="#" alt="#" class="elements__image">
         <div class="elements__info">
           <h2 class="elements__name"></h2>
-          <button class="elements__button-heart" id="heart" type="button"></button>
+          <div class="elements__like-container">
+            <button class="elements__button-heart" id="heart" type="button"></button>
+            <span class="elements__like-count">0</span>
+          </div>
         </div>
-      </article>
+      </li>
     </template>
 
     <section class="popup" id="edit-popup">
@@ -50,14 +57,14 @@
         <form name="form" class="popup__item-container" novalidate>
           <h2 class="popup__heading">Редактировать профиль</h2>
           <label class="popup__label">
-          <input required id="userName" type="text" minlength="2" maxlength="40" class="popup__item popup__item_el_name" placeholder="Имя">
+          <input name="username" required id="userName" type="text" minlength="2" maxlength="40" class="popup__item popup__item_el_name" placeholder="Имя">
           <span id="error-userName" class="error-message popup__error popup__error_visible"></span>
           </label>
           <label class="popup__label">
-          <input required id="someSelf" type="text" minlength="2" maxlength="200" class="popup__item popup__item_el_career" placeholder="О себе">
+          <input name="activity" required id="someSelf" type="text" minlength="2" maxlength="200" class="popup__item popup__item_el_career" placeholder="О себе">
           <span id="error-someSelf" class="error-message popup__error popup__error_visible"></span>
           </label>
-          <button class="popup__button-save popup__button_disabled" type="submit">Сохранить</button>
+          <button class="popup__button-save popup__button_disabled popup__button_save_profile" type="submit">Сохранить</button>
         </form>
       </div>
     </section>
@@ -68,14 +75,28 @@
         <form name="formCreatPlace" class="popup__item-container" novalidate>
           <h2 class="popup__heading">Новое место</h2>
           <label class="popup__label">
-          <input required id="placeName" type="text" minlength="2" maxlength="30" class="popup__item popup__item_el_places" placeholder="Название">
+          <input name="cardName" required id="placeName" type="text" minlength="2" maxlength="30" class="popup__item popup__item_el_places" placeholder="Название">
           <span id="error-placeName" class="error-message popup__error popup__error_visible"></span>
           </label>
           <label class="popup__label">
-          <input required id="linkPlace" type="url" class="popup__item popup__item_el_link" placeholder="Ссылка на картинку">
+          <input name="cardImage" required id="linkPlace" type="url" class="popup__item popup__item_el_link" placeholder="Ссылка на картинку">
           <span id="error-linkPlace" class="error-message popup__error popup__error_visible"></span>
           </label>
-          <button class="popup__button-save popup__button-save_disabled popup__button-save_el_creat" type="submit">Создать</button>
+          <button class="popup__button-save popup__button-save_disabled popup__button_save_card" type="submit">Создать</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="popup" id="photo-popup">
+      <div class="popup__container">
+        <button class="popup__button-close" type="button"></button>
+        <form name="formPhoto" class="popup__item-container" novalidate>
+          <h2 class="popup__heading">Обновить аватар</h2>
+          <label class="popup__label">
+            <input name="img" id="linkPhoto" type="url" class="popup__item popup__item_el_avatar" placeholder="Ссылка на картинку"  required>
+            <span id="error-linkPhoto" class="error-message popup__error popup__error_visible"></span>
+          </label>
+          <button class="popup__button-save popup__button_save_avatar popup__button-save_disabled" type="submit">Сохранить</button>
         </form>
       </div>
     </section>
@@ -93,7 +114,6 @@
     </section>
 
   </div>
-<!--  <script src="./script.js"></script>-->
 </body>
 
 </html>

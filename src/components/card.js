@@ -1,65 +1,69 @@
 import {openPopup} from './utils.js';
+import API from './api.js';
 
 const templateCards = document.querySelector('#template-cards').content;
-const cardElements = document.querySelector('.elements');//
+const cardElements = document.querySelector('.elements__list');//
 
 const imagePopup = document.querySelector('#image-popup');//
 const imageFigcaption = imagePopup.querySelector('.popup__image-figcaption');//
 const photoPopup = imagePopup.querySelector('.popup__image');//
 
-// переменные для передачи данных из масива в ф-цию создания карточек
-
-let place;
-let links;
-
-// todo масив с карточками
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
 
 // todo создание карточек
-function createCard(place, links) {
+function createCard(place, links, id, likes, userId, owner) {
   const elements = templateCards.querySelector('.elements__element').cloneNode(true);
   const image = elements.querySelector('.elements__image');
+  const deleteButtonCard = elements.querySelector('.elements__trash-button');
+  const containerLike = elements.querySelector('.elements__like-container');
+  const likeButton = containerLike.querySelector('.elements__button-heart');
+  const countLike = elements.querySelector('.elements__like-count');
+  const elementsName = elements.querySelector('.elements__name');
+
   image.src = links;
   image.alt = place;
-  elements.querySelector('.elements__name').textContent = place;
-  const deleteButtonCard = elements.querySelector('.elements__trash-button');
-  const likeButton = elements.querySelector('.elements__button-heart');
+  elementsName.textContent = place;
+  elements.dataset.id = id;
+  countLike.textContent = likes.length;
 
+  if (userId !== owner._id) {
+    deleteButtonCard.remove();
+  }
 
-  // todo кнопка удаления карточек
-  deleteButtonCard.addEventListener('click', function (evt) {
-    evt.target.closest('.elements__element').remove();
-  });
+//  кнопка удаления карточек
+  deleteButtonCard.addEventListener('click', deleteRemoveCard)
+  function deleteRemoveCard (evt) {
+    API.deleteCard(evt.target.closest('.elements__element').dataset.id) // dataset.id прочитать
+      .then(() => {
+        evt.target.closest('.elements__element').remove();
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  }
 
   // todo кнопка лайка карточек
-  likeButton.addEventListener('click', function (evt) {
-    evt.target.classList.toggle('elements__button-heart_active');
-  });
+  likeButton.addEventListener('click', addLikeInCard);
+  function addLikeInCard (evt) {
+    if (evt.target.classList.contains('elements__button-heart_active')) {
+      API.removeLike(elements.dataset.id)
+        .then((res) => {
+          evt.target.classList.remove('elements__button-heart_active');
+          countLike.textContent = res.likes.length;
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+    } else {
+      API.addLike(elements.dataset.id)
+        .then((res) => {
+          evt.target.classList.add('elements__button-heart_active');
+          countLike.textContent = res.likes.length;
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+    }
+  }
 
   image.addEventListener("click", function () {
     photoPopup.src = links;
@@ -74,13 +78,5 @@ function addCard (elements) {
   cardElements.prepend(elements);
 }
 
-// todo перебор масива с картачками и вызов ф-ции создания карточек
-initialCards.forEach(function (card) {
-  place = card.name;
-  links = card.link;
-  //вызов ф-ции создания карточек
-  return addCard(createCard(card.name, card.link));
-});
 
-
-export {addCard, createCard};
+export {addCard, createCard, cardElements};

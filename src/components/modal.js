@@ -1,9 +1,10 @@
-import {closePopup} from "./utils";
-import {createCard, addCard} from "./card.js";
+import {closePopup, openPopup} from "./utils";
+import {createCard, addCard, cardElements} from "./card.js";
 import {objEnableValidation, disableButton} from "./validate";
+import API from './api.js';
 
 const form = document.forms.formCreatPlace;
-
+const clearAvatar = document.forms.formPhoto;
 
 const itemPopup = document.querySelector('#item-popup');//
 
@@ -22,23 +23,75 @@ const creatCard = itemPopup.querySelector('.popup__item-container');//
 const nameImputCard = creatCard.querySelector('.popup__item_el_places');//
 const linksImputCard = creatCard.querySelector('.popup__item_el_link');//
 
+const buttonSaveProfile = document.querySelector('.popup__button_save_profile');
+
 const creatButton = document.querySelector('.popup__button-save_el_creat');
 
+const buttonSaveCards = document.querySelector('.popup__button_save_card')
+
+const avatarPopup = document.querySelector('#photo-popup');
+const formAvatar = avatarPopup.querySelector('.popup__item-container');
+const buttonSaveAvatar = document.querySelector('.popup__button_save_avatar');
+const avatarInput = document.querySelector('.popup__item_el_avatar');
+const avatarButton = document.querySelector('.profile__avatar');
+const profileAvatarButton = document.querySelector('.profile__button-avatar')
 // todo кнопка сохранить изменения в редактировании профиля
+
 formElement.addEventListener('submit', function (evt){
   evt.preventDefault();
-  profileName.textContent = nameInput.value;
-  profileCareer.textContent = jobInput.value;
-  closePopup(editPopup);
+  buttonSaveProfile.textContent = 'Сохранение...';
+  // вызываем ф-цию АПИ
+  API.createProfileData(nameInput.value, jobInput.value)
+    .then(data => {
+      profileName.textContent = data.name;
+      profileCareer.textContent = data.about;
+      closePopup(editPopup);
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+    .finally(() => {
+      buttonSaveProfile.textContent = 'Сохранить';
+    })
+});
+
+formAvatar.addEventListener('submit', function (evt) {
+  evt.preventDefault();
+  buttonSaveAvatar.textContent = 'Сохранение...';
+  API.createAvatar(avatarInput.value)
+    .then(data => {
+      avatarButton.src = data.avatar;
+      disableButton(buttonSaveAvatar, objEnableValidation);
+      closePopup(avatarPopup);
+      clearAvatar.reset();
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+    .finally(() => {
+      buttonSaveAvatar.textContent = 'Сохранить';
+    })
 });
 
 creatCard.addEventListener('submit', function (evt){
   evt.preventDefault();
-  addCard(createCard(nameImputCard.value, linksImputCard.value));
-  disableButton(creatButton, objEnableValidation);
-  form.reset();
-  closePopup(itemPopup);
+  buttonSaveCards.textContent = 'Сохранение...';
+  const ggg = nameImputCard.value;
+  const aaa = linksImputCard.value
+
+  API.createNewCard(ggg, aaa)
+    .then(res => {
+      cardElements.prepend(createCard(res.name, res.link, res._id, res.likes, res.owner._id, res.owner))
+      // disableButton(creatButton, objEnableValidation);
+      closePopup(itemPopup);
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+    .finally(() => {
+      buttonSaveCards.textContent = 'Сохранить';
+    })
 });
 
-export {itemPopup, editPopup, profile, addButton, profileName, profileCareer, buttonEditProfile,
+export {itemPopup, editPopup, avatarPopup, avatarButton, profileAvatarButton, formAvatar, buttonSaveAvatar, avatarInput, profile, addButton, profileName, profileCareer, buttonEditProfile,
   formElement, nameInput, jobInput, form, creatCard, nameImputCard, linksImputCard}
