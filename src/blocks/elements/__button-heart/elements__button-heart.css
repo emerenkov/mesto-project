@@ -9,6 +9,7 @@
   background-repeat: no-repeat;
   background-position: center;
   transition-duration: .5s;
+  height:100%;
 }
 
 .elements__button-heart:hover {

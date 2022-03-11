@@ -6,6 +6,7 @@
 @import url(../blocks/header/__logo/header__logo.css);
 @import url(../blocks/main/main.css);
 @import url(../blocks/profile/profile.css);
+@import url(../blocks/profile/__button-avatar/profile__button-avatar.css);
 @import url(../blocks/profile/__avatar/profile__avatar.css);
 @import url(../blocks/profile/__info/profile__info.css);
 @import url(../blocks/profile/__name/profile__name.css);
@@ -13,11 +14,13 @@
 @import url(../blocks/profile/__career/profile__career.css);
 @import url(../blocks/profile/__add-button/profile__add-button.css);
 @import url(../blocks/elements/elements.css);
+@import url(../blocks/elements/__list/elements__list.css);
 @import url(../blocks/elements/__element/elements__element.css);
 @import url(../blocks/elements/__image/elements__image.css);
 @import url(../blocks/elements/__trash-button/elements__trash-button.css);
 @import url(../blocks/elements/__info/elements__info.css);
 @import url(../blocks/elements/__name/elements__name.css);
+@import url(../blocks/elements/__like-container/elements__like-container.css);
 @import url(../blocks/elements/__button-heart/elements__button-heart.css);
 @import url(../blocks/elements/__button-heart/_active/elements__button-heart_active.css);
 @import url(../blocks/footer/footer.css);
