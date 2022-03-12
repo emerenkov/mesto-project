@@ -82,7 +82,7 @@ creatCard.addEventListener('submit', function (evt){
   API.createNewCard(ggg, aaa)
     .then(res => {
       cardElements.prepend(createCard(res.name, res.link, res._id, res.likes, res.owner._id, res.owner))
-      // disableButton(creatButton, objEnableValidation);
+      disableButton(buttonSaveCards, objEnableValidation);
       closePopup(itemPopup);
     })
     .catch((err) => {
