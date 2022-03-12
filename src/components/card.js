@@ -25,6 +25,10 @@ function createCard(place, links, id, likes, userId, owner) {
   elements.dataset.id = id;
   countLike.textContent = likes.length;
 
+  if (likes.some(likedUser => likedUser._id === userId)) {
+    likeButton.classList.add('elements__button-heart_active');
+  }
+
   if (userId !== owner._id) {
     deleteButtonCard.remove();
   }
@@ -41,8 +45,9 @@ function createCard(place, links, id, likes, userId, owner) {
       })
   }
 
-  // todo кнопка лайка карточек
+  // кнопка лайка карточек
   likeButton.addEventListener('click', addLikeInCard);
+  // функция лайка карточки
   function addLikeInCard (evt) {
     if (evt.target.classList.contains('elements__button-heart_active')) {
       API.removeLike(elements.dataset.id)

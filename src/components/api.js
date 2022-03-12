@@ -70,7 +70,7 @@ const deleteCard = (cardId) => {
 const addLike = (cardId) => {
   return fetch(`${config.url}/cards/likes/${cardId}`, {
     method: 'PUT', // предназначен для полного обнавления указанного ресурса
-    headers: config.headers
+    headers: config.headers,
   })
 .then(res => parseResponse(res))
 };
