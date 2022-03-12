@@ -76,10 +76,10 @@ formAvatar.addEventListener('submit', function (evt) {
 creatCard.addEventListener('submit', function (evt){
   evt.preventDefault();
   buttonSaveCards.textContent = 'Сохранение...';
-  const ggg = nameImputCard.value;
-  const aaa = linksImputCard.value
+  const nameInputValue = nameImputCard.value;
+  const likeInputValue = linksImputCard.value
 
-  API.createNewCard(ggg, aaa)
+  API.createNewCard(nameInputValue, likeInputValue)
     .then(res => {
       cardElements.prepend(createCard(res.name, res.link, res._id, res.likes, res.owner._id, res.owner))
       disableButton(buttonSaveCards, objEnableValidation);
