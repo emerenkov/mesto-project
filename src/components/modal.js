@@ -93,5 +93,10 @@ creatCard.addEventListener('submit', function (evt){
     })
 });
 
-export {itemPopup, editPopup, avatarPopup, avatarButton, profileAvatarButton, formAvatar, buttonSaveAvatar, avatarInput, profile, addButton, profileName, profileCareer, buttonEditProfile,
-  formElement, nameInput, jobInput, form, creatCard, nameImputCard, linksImputCard}
+export {itemPopup, editPopup, avatarPopup,
+  avatarButton, profileAvatarButton, formAvatar,
+  buttonSaveAvatar, avatarInput, profile,
+  addButton, profileName, profileCareer,
+  buttonEditProfile,
+  formElement, nameInput, jobInput, form,
+  creatCard, nameImputCard, linksImputCard}
