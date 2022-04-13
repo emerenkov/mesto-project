@@ -36,3 +36,20 @@ popups.forEach((popup) => {
 
 
 export {openPopup, closePopup, closeByEscape};
+
+
+
+
+export default class Popup {
+  constructor(selector) {
+      this.selector = selector;
+  }
+
+  open() {
+      this.selector.classList.add('popup_opened');
+  }
+
+  close() {
+      this.selector.classList.remove('popup_opened');
+  }
+}

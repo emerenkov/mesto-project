@@ -30,7 +30,7 @@ const createProfileData = (username, activity) => {
   return fetch(`${config.url}/users/me`, {
     method: 'PATCH', // обновляет профиль
     headers: config.headers,
-    body: JSON.stringify(profileInfo)
+    body: JSON.stringify(profileInfo),
   })
 .then(res => parseResponse(res))
 };
